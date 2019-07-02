@@ -10,7 +10,9 @@ namespace LemonadeStandGame
   {
     public Game()
     {
-
+      Weather testWeather = new Weather();
+      Console.WriteLine($"Forecast: {testWeather.forecast} Temperatue: {testWeather.temperature} degrees");
+      Console.ReadLine();
     }
 
     public void Initialize()
