@@ -11,7 +11,6 @@ namespace LemonadeStandGame
     private string[] forecastArray;
     public int temperature;
     public string forecast;
-    public int weatherId;
     Random randomNumber;
 
     public Weather(Random randomNumber)
