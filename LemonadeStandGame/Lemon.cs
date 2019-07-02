@@ -6,18 +6,12 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandGame
 {
-  class Inventory
+  class Lemon : Ingredient
   {
-    Cup cups;
-    Lemon lemons;
-    Sugar sugar;
-    Ice iceCubes;
-    
-    public Inventory()
+    public Lemon()
     {
-
+      
     }
-
 
 
   }

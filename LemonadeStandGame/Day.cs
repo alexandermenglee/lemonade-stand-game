@@ -8,9 +8,14 @@ namespace LemonadeStandGame
 {
   class Day
   {
-    public Day()
-    {
+    public Weather weather;
+    public Random randomNumber;
 
+    public Day(Random randomNumber)
+    {
+      this.randomNumber = randomNumber;
+      weather = new Weather(randomNumber);
     }
+
   }
 }

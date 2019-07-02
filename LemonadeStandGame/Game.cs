@@ -8,53 +8,37 @@ namespace LemonadeStandGame
 {
   class Game
   {
-    public int days;
-    public List<Weather> weatherCollection = new List<Weather>();
-    Random rng;
+    public List<Day> days = new List<Day>();
+    UserInterface ui;
+    Random randomNumber;
     public Game()
     {
-      rng = new Random();
+      ui = new UserInterface();
+      randomNumber = new Random();
     }
 
     public void Initialize()
     {
-      DisplayRules();
-      GetDays();
+      ui.DisplayRules();
+      int amountOfDays;
 
-      for(int i = 0; i < days; i++)
+      amountOfDays = int.Parse(ui.AskDuration());
+
+      for (int i = 0; i < amountOfDays; i++)
       {
-        CreateWeather(i+1, rng);
+        days.Add(new Day(randomNumber));
       }
 
-      // Used for testing only
-      for (int i = 0; i < weatherCollection.Count; i++)
+      // testing only
+      for(int i = 0; i < days.Count; i++)
       {
-        Console.WriteLine($"Weather ID: {weatherCollection[i].weatherId}: Forecast: {weatherCollection[i].forecast} Temperature: {weatherCollection[i].temperature}");
+        Console.WriteLine($"Day {i}: \nForecast:{days[i].weather.forecast} \nTemperature: {days[i].weather.temperature}");
       }
 
       Console.ReadLine();
     }
 
-    public void DisplayRules()
-    {
-      Console.WriteLine("Rules are ... Press 'enter' to continue");
-      Console.ReadLine();
-    }
-
-    public int GetDays()
-    {
-      Console.WriteLine("How many days would you like to play for? (7, 14, 30)");
-
-      return days = Convert.ToInt32(Console.ReadLine());
-    }
-
-    public void CreateWeather(int id, Random rng)
-    {
-      Weather weather = new Weather(id, rng);
-      weather.SetForecast();
-      weather.SetTemperature();
-      weatherCollection.Add(weather);
-    }
+    
 
   }
 }
