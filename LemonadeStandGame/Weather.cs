@@ -11,18 +11,29 @@ namespace LemonadeStandGame
     private string[] forecastArray;
     public int temperature;
     public string forecast;
+    public int weatherId;
+    Random rng;
 
-    public Weather()
+    public Weather(int weatherId, Random rng)
+    {
+      this.rng = rng;
+      this.weatherId = weatherId;
+      forecastArray = new string[] { "sunny", "cloudy", "rainy", "hazy" };
+    }
+
+    public void SetForecast()
     {
       // Generate a random forecast
-      forecastArray = new string[] { "sunny", "cloudy", "rainy", "hazy" };
-      Random randomForecast = new Random();
-      int forecastIndex = randomForecast.Next(0, forecastArray.Length);
+      
+      int forecastIndex = rng.Next(0, forecastArray.Length);
       forecast = forecastArray[forecastIndex];
-
-      // Generate random temperatue between 48 and 103 degrees
-      Random randomTemperatue = new Random();
-      temperature = randomTemperatue.Next(48, 103);
     }
+
+    public void SetTemperature()
+    {
+      // Generate random temperatue between 48 and 103 degrees
+      temperature = rng.Next(48, 103);
+    }
+
   }
 }
