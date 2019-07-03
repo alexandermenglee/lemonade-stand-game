@@ -8,10 +8,16 @@ namespace LemonadeStandGame
 {
   class Store
   {
-    UserInterface ui;
+    public UserInterface ui;
+
     public Store()
     {
       ui = new UserInterface();
+    }
+
+    public void ShowStore(Player player)
+    {
+      ui.DisplayPlayerInventory(player.inventory, player);
     }
 
     public double GetCups()

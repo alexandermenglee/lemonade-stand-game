@@ -12,6 +12,9 @@ namespace LemonadeStandGame
     {
       Game game = new Game();
       game.Initialize();
+      game.StartGame();
+
+      Console.ReadLine();
     }
   }
 }

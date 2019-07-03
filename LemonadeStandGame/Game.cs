@@ -8,13 +8,18 @@ namespace LemonadeStandGame
 {
   class Game
   {
-    public List<Day> days = new List<Day>();
-    UserInterface ui;
+    public List<Day> days;
     Random randomNumber;
+    public UserInterface ui;
+    public Player player;
+    public Store store;
     public Game()
     {
+      days = new List<Day>();
       ui = new UserInterface();
       randomNumber = new Random();
+      player = new Player();
+      store = new Store();
     }
 
     public void Initialize()
@@ -24,21 +29,20 @@ namespace LemonadeStandGame
 
       amountOfDays = int.Parse(ui.AskDuration());
 
+      // Creates day objects depending on user input and pushes them into a List
       for (int i = 0; i < amountOfDays; i++)
       {
         days.Add(new Day(randomNumber));
       }
-
-      // testing only
-      for(int i = 0; i < days.Count; i++)
-      {
-        Console.WriteLine($"Day {i}: \nForecast:{days[i].weather.forecast} \nTemperature: {days[i].weather.temperature}");
-      }
-
-      Console.ReadLine();
     }
 
-    
+    public void StartGame()
+    {
+      store.ShowStore(player);
+
+    }
+
+
 
   }
 }

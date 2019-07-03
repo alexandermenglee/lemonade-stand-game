@@ -10,7 +10,7 @@ namespace LemonadeStandGame
   {
     public UserInterface()
     {
-
+      
     }
 
     public void DisplayRules()
@@ -48,6 +48,22 @@ namespace LemonadeStandGame
       return Console.ReadLine();
     }
 
+    public void DisplayStore(string money)
+    {
+      
+    }
+
+    public void DisplayPlayerInventory(Inventory inventory, Player player)
+    {
+      Console.WriteLine(
+        $"\nYou have: {player.cash.ToString("0.00")}\n" +
+        $"\nYour Inventory:" +
+        $"\nCups: {inventory.cups.Count} cups\n" +
+        $"Lemons: {inventory.lemons.Count} lemons\n" +
+        $"Sugar: {inventory.cupsOfSugar.Count} cups of sugar\n" +
+        $"Ice: {inventory.iceCubes.Count} ice cubes\n"
+        );
+    }
     
   }
 }
