@@ -22,7 +22,7 @@ namespace LemonadeStandGame
       ui.DisplayPlayerInventory(player.inventory, player);
       ui.DisplayWelcomeMessage();
       BuyIngredient(player, ui.DisplayStore());
-      Console.WriteLine(player.inventory.lemons.Count);
+      Console.WriteLine(player.cash);
     }
 
     public void BuyIngredient(Player player, string ingredient)
