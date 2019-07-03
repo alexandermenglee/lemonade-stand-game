@@ -39,7 +39,7 @@ namespace LemonadeStandGame
     public void StartGame()
     {
       store.ShowStore(player);
-
+      
     }
 
 
