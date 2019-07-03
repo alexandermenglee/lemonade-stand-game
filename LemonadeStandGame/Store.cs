@@ -22,27 +22,29 @@ namespace LemonadeStandGame
       ui.DisplayPlayerInventory(player.inventory, player);
       ui.DisplayWelcomeMessage();
       BuyIngredient(player, ui.DisplayStore());
-      Console.WriteLine(player.cash);
     }
 
     public void BuyIngredient(Player player, string ingredient)
     {
-      if(ingredient == "cups")
+      if (ingredient == "cups")
       {
         PurchaseCups(player, ingredient);
-        
       }
-      else if(ingredient == "lemons")
+      else if (ingredient == "lemons")
       {
-        PurchaseLemons(player, ingredient);        
+        PurchaseLemons(player, ingredient);
       }
-      else if(ingredient == "sugar")
+      else if (ingredient == "sugar")
       {
         PurchaseSugar(player, ingredient);
       }
-      else if(ingredient == "ice")
+      else if (ingredient == "ice")
       {
         PurchaseIce(player, ingredient);
+      }
+      else
+      {
+        Console.WriteLine("Will be moving onto create recipe method");
       }
     }
 
@@ -77,7 +79,7 @@ namespace LemonadeStandGame
       player.cash = player.cash - total;
 
       // check if player has enough cash
-      if (player.cash - total < 0)
+      if (player.cash < 0)
       {
         Console.WriteLine("You's a broke boi. Kicking you back to the Store Menu broke boi.");
         ui.DisplayStore();
@@ -88,6 +90,9 @@ namespace LemonadeStandGame
       {
         player.inventory.cups.Add(new Cup());
       }
+
+      ui.BackToStoreMenu();
+      ShowStore(player);
     }
 
     // Method to purchase lemons
@@ -121,7 +126,7 @@ namespace LemonadeStandGame
       player.cash = player.cash - total;
 
       // check if player has enough cash
-      if (player.cash - total < 0)
+      if (player.cash < 0)
       {
         Console.WriteLine("You's a broke boi. Kicking you back to the Store Menu broke boi.");
         ui.DisplayStore();
@@ -132,6 +137,9 @@ namespace LemonadeStandGame
       {
         player.inventory.lemons.Add(new Lemon());
       }
+
+      ui.BackToStoreMenu();
+      ShowStore(player);
     }
 
     // Method to purchase sugar
@@ -165,7 +173,7 @@ namespace LemonadeStandGame
       player.cash = player.cash - total;
 
       // check if player has enough cash
-      if (player.cash - total < 0)
+      if (player.cash < 0)
       {
         Console.WriteLine("You's a broke boi. Kicking you back to the Store Menu broke boi.");
         ui.DisplayStore();
@@ -176,6 +184,9 @@ namespace LemonadeStandGame
       {
         player.inventory.cupsOfSugar.Add(new Sugar());
       }
+
+      ui.BackToStoreMenu();
+      ShowStore(player);
     }
     
     // Method to purchase ice
@@ -209,7 +220,7 @@ namespace LemonadeStandGame
       player.cash = player.cash - total;
 
       // check if player has enough cash
-      if (player.cash - total < 0)
+      if (player.cash < 0)
       {
         Console.WriteLine("You's a broke boi. Kicking you back to the Store Menu broke boi.");
         ui.DisplayStore();
@@ -220,6 +231,9 @@ namespace LemonadeStandGame
       {
         player.inventory.iceCubes.Add(new Ice());
       }
+
+      ui.BackToStoreMenu();
+      ShowStore(player);
     }
 
     /*DONT PUT CODE UNDER THIS*/

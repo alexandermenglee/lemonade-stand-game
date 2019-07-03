@@ -113,18 +113,21 @@ namespace LemonadeStandGame
     {
       string userInput;
 
-      Console.WriteLine("\nType in what you'd like to purchase. \ncups\nlemons\nsugar\nice");
+      Console.WriteLine("\nType in what you'd like to purchase. \ncups\nlemons\nsugar\nice\nfinished(If you wish to not purchase any ingredients or you are complete with purchasing)");
       userInput = Console.ReadLine();
       userInput.ToLower().Trim();
 
       if(userInput == "cups" || userInput == "lemons" || userInput == "sugar" || userInput == "ice")
       {
-        Console.WriteLine(userInput);
         return userInput;
+      }
+      else if(userInput == "finished")
+      {
+        return "";
       }
       else
       {
-        Console.WriteLine("Please enter in one of the folllowing: cups, lemons, sugar, ice\n");
+        Console.WriteLine("Please enter in one of the folllowing: cups, lemons, sugar, ice or finished\n");
         return DisplayStore();
       }
     }
@@ -139,6 +142,12 @@ namespace LemonadeStandGame
         $"Sugar: {inventory.cupsOfSugar.Count} cups of sugar\n" +
         $"Ice: {inventory.iceCubes.Count} ice cubes\n"
         );
+    }
+
+    public void BackToStoreMenu()
+    {
+      Console.WriteLine("Press any key to return to the store menu");
+      Console.ReadLine();
     }
     
   }
