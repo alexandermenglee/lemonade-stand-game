@@ -44,7 +44,7 @@ namespace LemonadeStandGame
       }
       else
       {
-        Console.WriteLine("Will be moving onto create recipe method");
+        player.SetRecipe();
       }
     }
 

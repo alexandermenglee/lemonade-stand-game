@@ -19,10 +19,27 @@ namespace LemonadeStandGame
       Console.ReadLine();
     }
 
+    public void DisplayWeather(Weather weather)
+    {
+      Console.WriteLine($"\n********** WEATHER **********\nToday's weather is: {weather.forecast} with a high of {weather.temperature} degrees\n");
+    }
+
+    // Asking how many days the user would like to play for
     public string AskDuration()
     {
+      string duration;
       Console.WriteLine("How many days would you like to play for? (enter '7', '14', or '30')");
-      return Console.ReadLine();
+      duration = Console.ReadLine();
+      duration.Trim();
+
+      if(duration == "7" || duration == "14" || duration == "30")
+      {
+        return duration;
+      }
+
+      Console.WriteLine("\nPlease enter '7', '14' or '30'\n");
+
+      return AskDuration();
     }
 
     public int AskForCups()
@@ -113,7 +130,7 @@ namespace LemonadeStandGame
     {
       string userInput;
 
-      Console.WriteLine("\nType in what you'd like to purchase. \ncups\nlemons\nsugar\nice\nfinished(If you wish to not purchase any ingredients or you are complete with purchasing)");
+      Console.WriteLine("\nType in what you'd like to purchase. \n- cups\n- lemons\n- sugar\n- ice\n- finished(If you wish to not purchase any ingredients or you are complete with purchasing)");
       userInput = Console.ReadLine();
       userInput.ToLower().Trim();
 
@@ -135,6 +152,7 @@ namespace LemonadeStandGame
     public void DisplayPlayerInventory(Inventory inventory, Player player)
     {
       Console.WriteLine(
+        "********************************************************************" + 
         $"\nYou have: {player.cash.ToString("0.00")}\n" +
         $"\nYour Inventory:" +
         $"\nCups: {inventory.cups.Count} cups\n" +
@@ -146,7 +164,18 @@ namespace LemonadeStandGame
 
     public void BackToStoreMenu()
     {
-      Console.WriteLine("Press any key to return to the store menu");
+      Console.WriteLine("Press 'Enter' to return to the store menu");
+      Console.ReadLine();
+    }
+
+    public void RecipeWelcomePage()
+    {
+      Console.WriteLine("\n******************************************************************** \nWelcome To The Recipe Maker!\n");
+    }
+
+    public void AskForRecipe()
+    {
+      Console.WriteLine("How many lemons per pitcher do you wish to add?");
       Console.ReadLine();
     }
     

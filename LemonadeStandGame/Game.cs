@@ -38,8 +38,8 @@ namespace LemonadeStandGame
 
     public void StartGame()
     {
+      ui.DisplayWeather(days[0].weather);
       store.ShowStore(player);
-      
     }
 
 
