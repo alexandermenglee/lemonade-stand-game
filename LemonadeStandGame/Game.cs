@@ -13,6 +13,7 @@ namespace LemonadeStandGame
     public UserInterface ui;
     public Player player;
     public Store store;
+    public Recipe recipe;
     public Game()
     {
       days = new List<Day>();
@@ -20,6 +21,7 @@ namespace LemonadeStandGame
       randomNumber = new Random();
       player = new Player();
       store = new Store();
+      recipe = new Recipe();
     }
 
     public void Initialize()

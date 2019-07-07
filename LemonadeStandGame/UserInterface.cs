@@ -175,8 +175,22 @@ namespace LemonadeStandGame
 
     public void AskForRecipe()
     {
+      string lemonsPerPitcher;
+      string icePerCup;
+      string sugarPerPitcher;
+      double pricePerCup;
+
       Console.WriteLine("How many lemons per pitcher do you wish to add?");
-      Console.ReadLine();
+      lemonsPerPitcher = Console.ReadLine();
+
+      Console.WriteLine("How many ice cubes per cup would you like to add?");
+      icePerCup = Console.ReadLine();
+
+      Console.WriteLine("How much sugar would you like to put per pitcher?");
+      sugarPerPitcher = Console.ReadLine();
+
+      Console.WriteLine("Enter in the amount each cup of lemonade costs: ");
+      pricePerCup = double.Parse(Console.ReadLine());
     }
     
   }
