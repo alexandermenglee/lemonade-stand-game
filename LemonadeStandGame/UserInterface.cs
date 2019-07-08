@@ -217,6 +217,17 @@ namespace LemonadeStandGame
 
       return double.Parse(pricePerCup);
     }
-    
+
+    public void ShowSoldOutMessage()
+    {
+      Console.WriteLine("SOLD OUT");
+    }
+
+    public void DisplayAnalytics(Player player)
+    {
+      Console.WriteLine($"\n You made: {player.profit}!");
+    }
+
+
   }
 }

@@ -13,7 +13,7 @@ namespace LemonadeStandGame
     public UserInterface ui;
     public Player player;
     public Store store;
-    public double profit;
+
     public Game()
     {
       days = new List<Day>();
@@ -50,7 +50,7 @@ namespace LemonadeStandGame
         ui.RecipeWelcomePage();
         // asks for recipe for the current day and save the number to a variable
         days[indexOfDay].recipe.SetQuantityOfIngredients(days[indexOfDay]);
-        days[indexOfDay].SellLemonadeSimulation(days[indexOfDay].recipe);
+        days[indexOfDay].SellLemonadeSimulation(player, days[indexOfDay].recipe);
         indexOfDay++;
       }
     }
