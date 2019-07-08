@@ -10,11 +10,17 @@ namespace LemonadeStandGame
   {
     public Weather weather;
     public Random randomNumber;
+    public Recipe recipe;
+    public int lemonsPerPitch;
+    public int icePerCup;
+    public int sugarPerPitcher;
+    public double pricePerCup;
 
     public Day(Random randomNumber)
     {
       this.randomNumber = randomNumber;
       weather = new Weather(randomNumber);
+      recipe = new Recipe();
     }
 
   }

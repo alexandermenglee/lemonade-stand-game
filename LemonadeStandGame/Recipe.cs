@@ -15,7 +15,35 @@ namespace LemonadeStandGame
     public UserInterface ui = new UserInterface();
     public Recipe()
     {
-      lemon = new Lemon();
     }
+
+    public int GetLemons()
+    {
+      return ui.LemonsPerPitcher();
+    }
+
+    public int GetIcePerCup()
+    {
+      return ui.IcePerCup();
+    }
+
+    public int GetSugarPerPitch()
+    {
+      return ui.SugarPerPitcher();
+    }
+
+    public double GetPricePerCup()
+    {
+      return ui.PricePerCup();
+    }
+
+    public void SetQuantityOfIngredients(Day day)
+    {
+      day.lemonsPerPitch =  ui.LemonsPerPitcher();
+      day.icePerCup = ui.IcePerCup();
+      day.sugarPerPitcher = ui.SugarPerPitcher();
+      day.pricePerCup = ui.PricePerCup();
+    }
+
   }
 }

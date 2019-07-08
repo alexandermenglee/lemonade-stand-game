@@ -13,7 +13,6 @@ namespace LemonadeStandGame
     public UserInterface ui;
     public Player player;
     public Store store;
-    public Recipe recipe;
     public Game()
     {
       days = new List<Day>();
@@ -21,7 +20,6 @@ namespace LemonadeStandGame
       randomNumber = new Random();
       player = new Player();
       store = new Store();
-      recipe = new Recipe();
     }
 
     public void Initialize()
@@ -40,8 +38,19 @@ namespace LemonadeStandGame
 
     public void StartGame()
     {
-      ui.DisplayWeather(days[0].weather);
-      store.ShowStore(player);
+      int indexOfDay;
+      indexOfDay = 0;
+
+      while(indexOfDay < days.Count)
+      {
+        ui.ShowCurrentDay(indexOfDay, days.Count);
+        ui.DisplayWeather(days[indexOfDay].weather);
+        store.ShowStore(player);
+        ui.RecipeWelcomePage();
+        // asks for recipe for the current day and save the number to a variable
+        days[indexOfDay].recipe.SetQuantityOfIngredients(days[indexOfDay]);
+        indexOfDay++;
+      }
     }
 
 

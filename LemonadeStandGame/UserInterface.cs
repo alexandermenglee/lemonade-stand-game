@@ -42,6 +42,11 @@ namespace LemonadeStandGame
       return AskDuration();
     }
 
+    public void ShowCurrentDay(int day, int duration)
+    {
+      Console.WriteLine($"Day {day + 1} of {duration}");
+    }
+
     public int AskForCups()
     {
       int quatity;
@@ -173,24 +178,44 @@ namespace LemonadeStandGame
       Console.WriteLine("\n******************************************************************** \nWelcome To The Recipe Maker!\n");
     }
 
-    public void AskForRecipe()
+    public int LemonsPerPitcher()
     {
       string lemonsPerPitcher;
-      string icePerCup;
-      string sugarPerPitcher;
-      double pricePerCup;
 
-      Console.WriteLine("How many lemons per pitcher do you wish to add?");
+      Console.WriteLine("How many lemons would you like to add per pitcher?");
       lemonsPerPitcher = Console.ReadLine();
 
-      Console.WriteLine("How many ice cubes per cup would you like to add?");
+      return int.Parse(lemonsPerPitcher);
+    }
+
+    public int IcePerCup()
+    {
+      string icePerCup;
+
+      Console.WriteLine("How many ice cubes would you like to add per cup?");
       icePerCup = Console.ReadLine();
 
-      Console.WriteLine("How much sugar would you like to put per pitcher?");
+      return int.Parse(icePerCup);
+    }
+
+    public int SugarPerPitcher()
+    {
+      string sugarPerPitcher;
+
+      Console.WriteLine("How much sugar would you like to add per pitcher?");
       sugarPerPitcher = Console.ReadLine();
 
-      Console.WriteLine("Enter in the amount each cup of lemonade costs: ");
-      pricePerCup = double.Parse(Console.ReadLine());
+      return int.Parse(sugarPerPitcher);
+    }
+
+    public double PricePerCup()
+    {
+      string pricePerCup;
+
+      Console.WriteLine("Enter in the price per cup:");
+      pricePerCup = Console.ReadLine();
+
+      return double.Parse(pricePerCup);
     }
     
   }

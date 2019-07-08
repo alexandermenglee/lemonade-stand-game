@@ -44,7 +44,8 @@ namespace LemonadeStandGame
       }
       else
       {
-        player.SetRecipe();
+        // call get recipe method
+        ui.RecipeWelcomePage();
       }
     }
 
