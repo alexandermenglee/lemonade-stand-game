@@ -11,16 +11,36 @@ namespace LemonadeStandGame
     public Weather weather;
     public Random randomNumber;
     public Recipe recipe;
-    public int lemonsPerPitch;
-    public int icePerCup;
-    public int sugarPerPitcher;
-    public double pricePerCup;
+    public List<Customer> customers;
 
     public Day(Random randomNumber)
     {
       this.randomNumber = randomNumber;
       weather = new Weather(randomNumber);
       recipe = new Recipe();
+      customers = new List<Customer>();
+    }
+
+    public void SellLemonadeSimulation(Recipe recipe)
+    {
+      GenerateCustomers();
+     
+      for(int i = 0; i < customers.Count; i++)
+      {
+        customers[i].SetWillBuy(recipe);
+        Console.WriteLine($"Acceptable Price: {customers[i].acceptablePrice} " +
+          $"\nThirsty: {customers[i].thirsty} " +
+          $"\nWill Buy: {customers[i].willBuy}\n");
+      }
+    }
+
+    public void GenerateCustomers()
+    {
+      for (int i = 0; i < 10; i++)
+      {
+        Customer customer = new Customer(weather, randomNumber);
+        customers.Add(customer);
+      }
     }
 
   }
