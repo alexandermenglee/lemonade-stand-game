@@ -15,7 +15,7 @@ namespace LemonadeStandGame
     public UserInterface ui = new UserInterface();
     public Recipe()
     {
-
+      
     }
     public void SetQuantityOfIngredients(Day day)
     {

@@ -79,6 +79,9 @@ namespace LemonadeStandGame
       // subtract price from player.cash
       player.cash = player.cash - total;
 
+      // add price to player.cost
+      player.cost = player.cost + total;
+
       // check if player has enough cash
       if (player.cash < 0)
       {

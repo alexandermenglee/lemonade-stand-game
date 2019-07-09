@@ -15,7 +15,7 @@ namespace LemonadeStandGame
 
     public void DisplayRules()
     {
-      Console.WriteLine("Rules are ... Press 'enter' to continue");
+      Console.WriteLine("Welcome to Lemonade Stand Game!...Press 'enter' to continue");
       Console.ReadLine();
     }
 
@@ -263,7 +263,7 @@ namespace LemonadeStandGame
 
     public void DisplayAnalytics(Player player)
     {
-      Console.WriteLine($"\n You made: {player.profit}!");
+      Console.WriteLine($"\nProfits: {player.CalculateProfit().ToString("0.00")} \nEarned: {player.cash} \nSpent: {player.cost}");
     }
   }
 }
