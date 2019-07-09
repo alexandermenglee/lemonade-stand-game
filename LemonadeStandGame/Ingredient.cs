@@ -8,10 +8,9 @@ namespace LemonadeStandGame
 {
   public abstract class Ingredient
   {
-    public int quantity;
     public Ingredient()
     {
-      this.quantity = 0;
+
     }
   }
 }
