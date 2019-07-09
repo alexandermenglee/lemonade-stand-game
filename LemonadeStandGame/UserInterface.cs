@@ -185,7 +185,16 @@ namespace LemonadeStandGame
       Console.WriteLine("\nHow many lemons would you like to add per pitcher?");
       lemonsPerPitcher = Console.ReadLine();
 
-      return int.Parse(lemonsPerPitcher);
+      try
+      {
+        return int.Parse(lemonsPerPitcher);
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine("\nPlease enter a number");
+        return LemonsPerPitcher();
+      }
+      
     }
 
     public int IcePerCup()
@@ -195,7 +204,15 @@ namespace LemonadeStandGame
       Console.WriteLine("How many ice cubes would you like to add per cup?");
       icePerCup = Console.ReadLine();
 
-      return int.Parse(icePerCup);
+      try
+      {
+        return int.Parse(icePerCup);
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine("\nPlease enter a number");
+        return IcePerCup();
+      }
     }
 
     public int SugarPerPitcher()
@@ -205,7 +222,15 @@ namespace LemonadeStandGame
       Console.WriteLine("\nHow much sugar would you like to add per pitcher?");
       sugarPerPitcher = Console.ReadLine();
 
-      return int.Parse(sugarPerPitcher);
+      try
+      {
+        return int.Parse(sugarPerPitcher);
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine("\nPlease enter a number");
+        return SugarPerPitcher();
+      }
     }
 
     public double PricePerCup()
@@ -215,7 +240,15 @@ namespace LemonadeStandGame
       Console.WriteLine("Enter in the price per cup:");
       pricePerCup = Console.ReadLine();
 
-      return double.Parse(pricePerCup);
+      try
+      {
+        return double.Parse(pricePerCup);
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine("\nPlease enter a number");
+        return PricePerCup();
+      }
     }
 
     public void DisplaySoldCups(int soldCups)
@@ -232,7 +265,5 @@ namespace LemonadeStandGame
     {
       Console.WriteLine($"\n You made: {player.profit}!");
     }
-
-
   }
 }

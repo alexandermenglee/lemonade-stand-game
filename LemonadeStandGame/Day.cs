@@ -44,68 +44,6 @@ namespace LemonadeStandGame
       // check each customer's willBuy variable
       for(int i = 0; i < customers.Count; i++)
       {
-        /*if (customers[i].willBuy == true)
-        {
-          // check if pitcher is empty
-          if (pitcher == 0)
-          {
-            if (player.inventory.lemons.Count >= recipe.lemonsPerPitch)
-            {
-              if(player.inventory.cupsOfSugar.Count >= recipe.sugarPerPitcher)
-              {
-                player.inventory.lemons.RemoveRange(0, recipe.lemonsPerPitch);
-                player.inventory.cupsOfSugar.RemoveRange(0, recipe.sugarPerPitcher);
-                pitcher = 2;
-              }
-              else
-              {
-                ui.ShowSoldOutMessage();
-                break;
-              }
-            }
-            else
-            {
-              ui.ShowSoldOutMessage();
-              break;
-            }
-          }
-
-          // initially remove lemons and sugar since they're counted by the pitcher
-          if (sold == 0)
-            {
-              player.inventory.lemons.RemoveRange(0, recipe.lemonsPerPitch);
-              player.inventory.cupsOfSugar.RemoveRange(0, recipe.sugarPerPitcher);
-            }
-
-            // remove ingredients from inventory
-            if(player.inventory.cups.Count >= 1)
-            {
-              player.inventory.cups.RemoveRange(0, 1);
-            }
-            else
-            {
-              ui.ShowSoldOutMessage();
-              break;
-            }
-            
-            if(player.inventory.iceCubes.Count >= recipe.icePerCup)
-            {
-              player.inventory.iceCubes.RemoveRange(0, recipe.icePerCup);
-            }
-            else
-            {
-              ui.ShowSoldOutMessage();
-              break;
-            }
-
-          player.cash += recipe.pricePerCup;
-          player.profit += recipe.pricePerCup;
-          sold++;
-          pitcher--;
-        }*/
-
-        // **********************************************************
-
         // pitcher starts out empty (equal to 0)
 
         if (customers[i].willBuy == true)
@@ -144,6 +82,7 @@ namespace LemonadeStandGame
               break;
             }
           }
+
           // if pitcher is not equal to zero
           // check cups
           // check ice
