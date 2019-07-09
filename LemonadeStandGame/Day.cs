@@ -25,50 +25,138 @@ namespace LemonadeStandGame
 
     public void SellLemonadeSimulation(Player player, Recipe recipe)
     {
+      int sold;
       int pitcher;
-      int lemonQuantity;
-      int cupsQuantity;
-      int sugarQuantity;
-      int iceQuantity;
+      int pitcherEmpty;
 
-      lemonQuantity = player.inventory.lemons.Count;
-      cupsQuantity = player.inventory.cups.Count;
-      sugarQuantity = player.inventory.cupsOfSugar.Count;
-      iceQuantity = player.inventory.iceCubes.Count;
-      pitcher = 6;
+      sold = 0;
+      pitcher = 0;
+      pitcherEmpty = 0;
 
       GenerateCustomers();
 
+      // call SetWillBuy on each customer
       for(int i = 0; i < customers.Count; i++)
       {
         customers[i].SetWillBuy(recipe);
       }
       
+      // check each customer's willBuy variable
       for(int i = 0; i < customers.Count; i++)
       {
-        /*Console.WriteLine($"\nWill Buy: {customers[i].willBuy}\n" +
-          $"Thirst: {customers[i].thirsty}\n" +
-          $"Acceptable Price: {customers[i].acceptablePrice}\n");*/
-
-        if (customers[i].willBuy == true)
+        /*if (customers[i].willBuy == true)
         {
-          // check for enough cups, ice, sugar and lemons
-          if (cupsQuantity >= 1 && lemonQuantity >= recipe.lemonsPerPitch && sugarQuantity >= recipe.sugarPerPitcher && iceQuantity >= recipe.icePerCup)
+          // check if pitcher is empty
+          if (pitcher == 0)
           {
-            // remove ingredients from inventory
-            player.inventory.cups.RemoveRange(0, 1);
-            player.inventory.iceCubes.RemoveRange(0, recipe.icePerCup);
+            if (player.inventory.lemons.Count >= recipe.lemonsPerPitch)
+            {
+              if(player.inventory.cupsOfSugar.Count >= recipe.sugarPerPitcher)
+              {
+                player.inventory.lemons.RemoveRange(0, recipe.lemonsPerPitch);
+                player.inventory.cupsOfSugar.RemoveRange(0, recipe.sugarPerPitcher);
+                pitcher = 2;
+              }
+              else
+              {
+                ui.ShowSoldOutMessage();
+                break;
+              }
+            }
+            else
+            {
+              ui.ShowSoldOutMessage();
+              break;
+            }
+          }
 
-            if (pitcher == 6)
+          // initially remove lemons and sugar since they're counted by the pitcher
+          if (sold == 0)
             {
               player.inventory.lemons.RemoveRange(0, recipe.lemonsPerPitch);
               player.inventory.cupsOfSugar.RemoveRange(0, recipe.sugarPerPitcher);
-              pitcher = 0;
             }
+
+            // remove ingredients from inventory
+            if(player.inventory.cups.Count >= 1)
+            {
+              player.inventory.cups.RemoveRange(0, 1);
+            }
+            else
+            {
+              ui.ShowSoldOutMessage();
+              break;
+            }
+            
+            if(player.inventory.iceCubes.Count >= recipe.icePerCup)
+            {
+              player.inventory.iceCubes.RemoveRange(0, recipe.icePerCup);
+            }
+            else
+            {
+              ui.ShowSoldOutMessage();
+              break;
+            }
+
+          player.cash += recipe.pricePerCup;
+          player.profit += recipe.pricePerCup;
+          sold++;
+          pitcher--;
+        }*/
+
+        // **********************************************************
+
+        // pitcher starts out empty (equal to 0)
+
+        if (customers[i].willBuy == true)
+        {
+          // if pitcher is equal to 0 check:
+          if (pitcher == pitcherEmpty)
+          {
+            // check if there are enough lemons
+            // check if there is enough sugar
+            // check if there are enough cups
+            // check if there is enough ice
+            if (player.inventory.CheckLemons(player.inventory.lemons, recipe) &&
+               player.inventory.CheckSugar(player.inventory.cupsOfSugar, recipe) &&
+               player.inventory.CheckCups(player.inventory.cups) &&
+               player.inventory.CheckIce(player.inventory.iceCubes, recipe)
+              )
+            {
+              // if all are true, create a pitcher (set it equal to 6) 
+              // remove ingredients from inventory
+              // decrement pitcher by 1
+              pitcher = 6;
+              player.inventory.cups.RemoveRange(0, 1);
+              player.inventory.lemons.RemoveRange(0, recipe.lemonsPerPitch);
+              player.inventory.cupsOfSugar.RemoveRange(0, recipe.sugarPerPitcher);
+              player.inventory.iceCubes.RemoveRange(0, recipe.icePerCup);
+
+              player.cash += recipe.pricePerCup;
+              player.profit += recipe.pricePerCup;
+              sold++;
+              pitcher--;
+              continue;
+            }
+            else
+            {
+              ui.ShowSoldOutMessage();
+              break;
+            }
+          }
+          // if pitcher is not equal to zero
+          // check cups
+          // check ice
+          if(player.inventory.CheckCups(player.inventory.cups) && player.inventory.CheckIce(player.inventory.iceCubes, recipe))
+          {
+            // if both are true, remove both from inventory
+            player.inventory.cups.RemoveRange(0, 1);
+            player.inventory.iceCubes.RemoveRange(0, recipe.icePerCup);
 
             player.cash += recipe.pricePerCup;
             player.profit += recipe.pricePerCup;
-            pitcher++;
+            sold++;
+            pitcher--;
           }
           else
           {
@@ -77,16 +165,18 @@ namespace LemonadeStandGame
           }
         }
       }
+      ui.DisplaySoldCups(sold);
     }
 
     public void GenerateCustomers()
     {
-      for (int i = 0; i < 5; i++)
+      for (int i = 0; i < 100; i++)
       {
         Customer customer = new Customer(weather, randomNumber);
         customers.Add(customer);
       }
     }
-
   }
+
+  
 }

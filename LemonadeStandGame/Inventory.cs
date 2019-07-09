@@ -21,7 +21,45 @@ namespace LemonadeStandGame
       iceCubes = new List<Ice>();
     }
 
-    
+    // helper methods to check inventory
+    public bool CheckCups(List<Cup> cup)
+    {
+      if(cups.Count >= 1)
+      {
+        return true;
+      }
 
+      return false;
+    }
+
+    public bool CheckLemons(List<Lemon> lemons, Recipe recipe)
+    {
+      if (lemons.Count >= recipe.lemonsPerPitch)
+      {
+        return true;
+      }
+
+      return false;
+    }
+
+    public bool CheckSugar(List<Sugar> sugar, Recipe recipe)
+    {
+      if(sugar.Count >= recipe.sugarPerPitcher)
+      {
+        return true;
+      }
+
+      return false;
+    }
+
+    public bool CheckIce(List<Ice> ice, Recipe recipe)
+    {
+      if(ice.Count >= recipe.icePerCup)
+      {
+        return true;
+      }
+
+      return false;
+    }
   }
 }

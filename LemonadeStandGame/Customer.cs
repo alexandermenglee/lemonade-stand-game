@@ -128,6 +128,5 @@ namespace LemonadeStandGame
         willBuy = false;
       }
     }
-    // =========================================================
   }
 }

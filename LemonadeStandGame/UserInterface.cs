@@ -21,7 +21,7 @@ namespace LemonadeStandGame
 
     public void DisplayWeather(Weather weather)
     {
-      Console.WriteLine($"\n********** WEATHER **********\nToday's weather is: {weather.forecast} with a high of {weather.temperature} degrees\n");
+      Console.WriteLine($"\n********** WEATHER **********\n\nToday's weather is: {weather.forecast} with a high of {weather.temperature} degrees\n");
     }
 
     // Asking how many days the user would like to play for
@@ -44,7 +44,7 @@ namespace LemonadeStandGame
 
     public void ShowCurrentDay(int day, int duration)
     {
-      Console.WriteLine($"Day {day + 1} of {duration}");
+      Console.WriteLine($"\nDay {day + 1} of {duration}");
     }
 
     public int AskForCups()
@@ -52,7 +52,7 @@ namespace LemonadeStandGame
       int quatity;
       string userInput;
       
-      Console.WriteLine("How many cups would you like purchase? (25 cups for $.79, 50 cups for $.1.57, 100 cups for $3.13)");
+      Console.WriteLine("\nHow many cups would you like purchase? (25 cups for $.79, 50 cups for $.1.57, 100 cups for $3.13)");
       userInput = Console.ReadLine().ToLower().Trim();
 
       if(userInput == "25" || userInput == "50" || userInput == "100")
@@ -72,7 +72,7 @@ namespace LemonadeStandGame
       int quatity;
       string userInput;
 
-      Console.WriteLine("How many lemons would you like to purchase? (10 lemons for $.56, 30 lemons for $2.12, 75 lemons for $4.14)");
+      Console.WriteLine("\nHow many lemons would you like to purchase? (10 lemons for $.56, 30 lemons for $2.12, 75 lemons for $4.14)");
       userInput = Console.ReadLine().ToLower().Trim();
 
       if (userInput == "10" || userInput == "30" || userInput == "75")
@@ -92,7 +92,7 @@ namespace LemonadeStandGame
       int quatity;
       string userInput;
 
-      Console.WriteLine("How much sugar would you like to purchase? (8 cups of sugar for $.66, 20 cups of sugar for $1.71, 48 cups of sugar for 3.37)"); 
+      Console.WriteLine("\nHow much sugar would you like to purchase? (8 cups of sugar for $.66, 20 cups of sugar for $1.71, 48 cups of sugar for 3.37)"); 
       userInput = Console.ReadLine().ToLower().Trim();
 
       if (userInput == "8" || userInput == "20" || userInput == "48")
@@ -111,7 +111,7 @@ namespace LemonadeStandGame
       int quatity;
       string userInput;
 
-      Console.WriteLine("How much ice would you like to purchase? (100 ice cubes for $.75, 250 ice cubes for $2.12, 500 ice cubes for $3.88)");
+      Console.WriteLine("\nHow much ice would you like to purchase? (100 ice cubes for $.75, 250 ice cubes for $2.12, 500 ice cubes for $3.88)");
       userInput = Console.ReadLine().ToLower().Trim();
 
       if (userInput == "100" || userInput == "250" || userInput == "500")
@@ -175,14 +175,14 @@ namespace LemonadeStandGame
 
     public void RecipeWelcomePage()
     {
-      Console.WriteLine("\n******************************************************************** \nWelcome To The Recipe Maker!\n");
+      Console.WriteLine("\n******************************************************************** \nWelcome To The Recipe Maker!\n********************************************************************\n");
     }
 
     public int LemonsPerPitcher()
     {
       string lemonsPerPitcher;
 
-      Console.WriteLine("How many lemons would you like to add per pitcher?");
+      Console.WriteLine("\nHow many lemons would you like to add per pitcher?");
       lemonsPerPitcher = Console.ReadLine();
 
       return int.Parse(lemonsPerPitcher);
@@ -202,7 +202,7 @@ namespace LemonadeStandGame
     {
       string sugarPerPitcher;
 
-      Console.WriteLine("How much sugar would you like to add per pitcher?");
+      Console.WriteLine("\nHow much sugar would you like to add per pitcher?");
       sugarPerPitcher = Console.ReadLine();
 
       return int.Parse(sugarPerPitcher);
@@ -218,9 +218,14 @@ namespace LemonadeStandGame
       return double.Parse(pricePerCup);
     }
 
+    public void DisplaySoldCups(int soldCups)
+    {
+      Console.WriteLine($"\nYou sold {soldCups} cups of lemonade today!\n");
+    }
+
     public void ShowSoldOutMessage()
     {
-      Console.WriteLine("SOLD OUT");
+      Console.WriteLine("\n********\nSOLD OUT\n********\n");
     }
 
     public void DisplayAnalytics(Player player)

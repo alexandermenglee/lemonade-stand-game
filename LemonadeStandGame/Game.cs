@@ -47,12 +47,12 @@ namespace LemonadeStandGame
         ui.ShowCurrentDay(indexOfDay, days.Count);
         ui.DisplayWeather(days[indexOfDay].weather);
         store.ShowStore(player);
-        ui.RecipeWelcomePage();
         // asks for recipe for the current day and save the number to a variable
         days[indexOfDay].recipe.SetQuantityOfIngredients(days[indexOfDay]);
         days[indexOfDay].SellLemonadeSimulation(player, days[indexOfDay].recipe);
         indexOfDay++;
       }
+      ui.DisplayAnalytics(player);
     }
 
 

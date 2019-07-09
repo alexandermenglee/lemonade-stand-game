@@ -13,6 +13,5 @@ namespace LemonadeStandGame
     {
       this.quantity = 0;
     }
-
   }
 }
